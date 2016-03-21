@@ -193,7 +193,9 @@ STATICFILES_FINDERS = (
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-SECURE_SSL_REDIRECT = True
+if 'SSL_ONLY' in os.environ and os.environ['SSL_ONLY'] == 1:
+	SECURE_SSL_REDIRECT = True
+	SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # ticketer specific configs
 if 'SOCIAL_AUTH_REDDIT_KEY' not in os.environ or 'SOCIAL_AUTH_REDDIT_SECRET' not in os.environ:
