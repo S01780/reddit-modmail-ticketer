@@ -7,3 +7,4 @@ __pycache__
 /mail_bot/msg_caches
 /main/static/css/*.css
 /mail_bot/message_cache_test.py
+.env
