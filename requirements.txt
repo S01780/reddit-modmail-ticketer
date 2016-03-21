@@ -9,6 +9,7 @@ Jinja2==2.8
 MarkupSafe==0.23
 oauthlib==1.0.3
 praw==3.4.0
+psycopg2==2.6.1
 PyJWT==1.4.0
 python-social-auth==0.2.14
 python3-openid==3.0.9
