@@ -156,24 +156,15 @@ LOGIN_REDIRECT_URL = "/"
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-if DEBUG:
-	db = {
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES = {
+	'default': {
 		'ENGINE': 'django.db.backends.sqlite3',
 		'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 	}
-else:
-	db = {
-		'ENGINE': 'django.db.backends.postgresql_psycopg2',
-		'NAME': DB_NAME,
-		'USER': DB_USER,
-		'PASSWORD': DB_PASSWORD,
-		'HOST': 'localhost',
-		'PORT': '',
-	}
-
-DATABASES = {
-	'default': db
 }
+DATABASES['default'].update(db_from_env)
 
 
 # Internationalization
@@ -204,3 +195,5 @@ STATICFILES_FINDERS = (
 	'django.contrib.staticfiles.finders.FileSystemFinder',
 	'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'

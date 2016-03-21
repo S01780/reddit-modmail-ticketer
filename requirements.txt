@@ -1,5 +1,6 @@
 decorator==4.0.9
 defusedxml==0.4.1
+dj-database-url==0.4.0
 Django==1.9.2
 django-jinja==2.1.2
 django-widget-tweaks==1.4.1
