@@ -12,11 +12,6 @@ DEBUG = True
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-if DEBUG:
-	from config_debug import *
-else:
-	from config import *
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
@@ -197,3 +192,13 @@ STATICFILES_FINDERS = (
 )
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+
+# ticketer specific configs
+REDDIT_USERAGENT = ""
+REDDIT_OAUTH_SCOPES = {"identity", "privatemessages"}
+
+SOCIAL_AUTH_REDDIT_KEY = ""
+SOCIAL_AUTH_REDDIT_SECRET = ""
+SOCIAL_AUTH_REDDIT_AUTH_EXTRA_ARGUMENTS = {"duration": "permanent", "scope": ",".join(REDDIT_OAUTH_SCOPES)}
+SOCIAL_AUTH_REDDIT_REDIRECT = "http://localhost:8000/complete/reddit/"
