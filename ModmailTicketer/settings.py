@@ -193,15 +193,17 @@ STATICFILES_FINDERS = (
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
+SECURE_SSL_REDIRECT = True
+
+# ticketer specific configs
 if 'SOCIAL_AUTH_REDDIT_KEY' not in os.environ or 'SOCIAL_AUTH_REDDIT_SECRET' not in os.environ:
     raise Exception("You need to set social keys in your env. Either do it on the command line\
         \nor set it in .env and use `heroku local:run !!` to run this")
 
-# ticketer specific configs
 REDDIT_USERAGENT = "S01780"
 REDDIT_OAUTH_SCOPES = {"identity", "privatemessages"}
 
 SOCIAL_AUTH_REDDIT_KEY = os.environ['SOCIAL_AUTH_REDDIT_KEY']
 SOCIAL_AUTH_REDDIT_SECRET = os.environ['SOCIAL_AUTH_REDDIT_SECRET']
 SOCIAL_AUTH_REDDIT_AUTH_EXTRA_ARGUMENTS = {"duration": "permanent", "scope": ",".join(REDDIT_OAUTH_SCOPES)}
-SOCIAL_AUTH_REDDIT_REDIRECT = "http://localhost:8000/complete/reddit/"
+SOCIAL_AUTH_REDDIT_REDIRECT = "https://reddit-modmail-ticketer.herokuapp.com/complete/reddit/"
