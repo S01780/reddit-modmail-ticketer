@@ -198,6 +198,7 @@ if 'SSL_ONLY' in os.environ and os.environ['SSL_ONLY'] == "1":
 	SECURE_SSL_REDIRECT = True
 	SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
+
 # ticketer specific configs
 if 'SOCIAL_AUTH_REDDIT_KEY' not in os.environ or 'SOCIAL_AUTH_REDDIT_SECRET' not in os.environ:
     raise Exception("You need to set social keys in your env. Either do it on the command line\
@@ -210,3 +211,6 @@ SOCIAL_AUTH_REDDIT_KEY = os.environ['SOCIAL_AUTH_REDDIT_KEY']
 SOCIAL_AUTH_REDDIT_SECRET = os.environ['SOCIAL_AUTH_REDDIT_SECRET']
 SOCIAL_AUTH_REDDIT_AUTH_EXTRA_ARGUMENTS = {"duration": "permanent", "scope": ",".join(REDDIT_OAUTH_SCOPES)}
 SOCIAL_AUTH_REDDIT_REDIRECT = "https://reddit-modmail-ticketer.herokuapp.com/complete/reddit/"
+
+
+
